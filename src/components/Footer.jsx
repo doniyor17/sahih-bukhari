@@ -2,7 +2,7 @@
 function Footer({ styles }) {
   return (
     <footer className={`p-3 bg-colorTheme shadow-md` + " " + styles}>
-      <p>Copyright &copy; {new Date().getFullYear()}</p>
+      <p>Sahih Bukhari &copy; {new Date().getFullYear()}</p>
     </footer>
   );
 }
