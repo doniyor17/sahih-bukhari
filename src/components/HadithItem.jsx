@@ -8,7 +8,7 @@ function HadithItem({ hadith }) {
     return text;
   }
   return (
-    <div className="item flex flex-col justify-between">
+    <div className="item">
       <span>{textShorter(hadith?.hadithEnglish)}</span>
     </div>
   );

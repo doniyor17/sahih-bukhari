@@ -94,7 +94,12 @@
   }
 
   .item {
-    @apply py-2 px-4 block !w-full min-h-[170px] hover:bg-[#327032] shadow-lg bg-colorDark rounded-[10px] transition-all duration-200 ease-in-out;
+    @apply py-2 px-4 block !min-w-full min-h-[170px] hover:bg-[#327032] shadow-lg bg-colorDark rounded-[10px] transition-all duration-200 ease-in-out;
+  }
+  @media screen and (max-width: 394px) {
+    .item {
+      width: 330px;
+    }
   }
   .hadith-item_footer {
     @apply p-[3px] mr-2 bg-colorLight rounded-[100px] text-black text-xs shadow-sm;
