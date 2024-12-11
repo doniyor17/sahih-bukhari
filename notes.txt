@@ -1,0 +1,13 @@
+Requirements for Hadith App
+    1. Start page
+        -search input (hadith, book);
+        -reading book;
+        -change config (with translation, translitteration);
+
+Books(done) => Chapters(done) => Chapter's hadiths => Hadith (done)
+
+All hadiths(done)
+
+
+
+
