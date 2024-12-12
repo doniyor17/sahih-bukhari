@@ -25,7 +25,14 @@ function Chapter() {
     <div>
       {isLoading && <Loader />}
       {error && <Error message={error} />}
-      {chapters.length <= 0 && !error ? <Empty /> : <List items={chapters} />}
+      {chapters.length <= 0 && !error ? (
+        <Empty />
+      ) : (
+        <List
+          items={chapters}
+          isHadith={false}
+        />
+      )}
     </div>
   );
 }

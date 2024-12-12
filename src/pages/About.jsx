@@ -5,7 +5,7 @@ function About() {
   }, []);
   return (
     <div className="mt-5 text-black text-center">
-      <h2 className="text-center text-[20px] md:text-[32px]">About</h2>
+      <h2 className="text-center text-[20px] md:text-[36px]">About</h2>
       <div className="text-[16px] md:text-[20px] mt-6 mb-6">
         <p className="mb-4">
           May Allah give victory to Muslims in Palestine, Rohingya, Kashmir and
@@ -13,8 +13,8 @@ function About() {
           والروهينجا، وكشمير، وفي كل مكان في العالم.
         </p>
         <p className="mb-4">
-          This web site developed for seek of Allah pleasure and free. <br /> تم
-          تطوير هذا الموقع لوجه الله تعالى وهو مجاني.
+          This web site developed for seek of Allah pleasure and free to use.{" "}
+          <br /> تم تطوير هذا الموقع لوجه الله تعالى وهو مجاني.
         </p>
         <p>
           Remember in your duas and prayers. <br /> يرجى تذكرنا في دعائكم

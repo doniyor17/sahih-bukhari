@@ -17,10 +17,10 @@ function Home() {
         <span className="font-bold">
           Abu ʿAbd Allah Muhammad ibn Ismaʿil ibn Ibrahim al-Juʿfi al-Bukhari{" "}
         </span>
-        (Arabic: أبو عبد الله محمد بن إسماعيل بن إبرهيم الجعفي البخاري; 21 July
-        810 – 1 September 870) was a 9th-century Muslim muhaddith who is widely
-        regarded as the most important hadith scholar in the history of Sunni
-        Islam. Al-Bukhariʿs extant works include the hadith collection{" "}
+        أبو عبد الله محمد بن إسماعيل بن إبرهيم الجعفي البخاري (July 810 – 1
+        September 870) was a 9th-century Muslim muhaddith who is widely regarded
+        as the most important hadith scholar in the history of Sunni Islam.
+        Al-Bukhariʿs extant works include the hadith collection{" "}
         <span className="font-bold">
           Sahih Al-Bukhari, al-Tarikh al-Kabir, and al-Adab al-Mufrad.
         </span>{" "}

@@ -10,12 +10,15 @@ const initialState = {
   hadith: null,
   isLoading: false,
   error: null,
+  pagination: null,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "load/hadiths":
       return { ...state, hadiths: action.payload, error: null };
+    case "load/pagination":
+      return { ...state, pagination: action.payload, error: null };
     case "load/hadith":
       return { ...state, hadith: action.payload, error: null };
     case "loading":
@@ -29,17 +32,34 @@ function reducer(state, action) {
 // eslint-disable-next-line react/prop-types
 function HadithProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { hadiths, hadith, isLoading, error } = state;
+  const { hadiths, hadith, isLoading, error, pagination } = state;
 
-  async function fetchHadiths() {
+  async function fetchHadiths({ page, perPage, search }) {
     dispatch({ type: "loading", payload: true });
     try {
-      const res = await fetch(url + `hadiths?book=sahih-bukhari&apiKey=${key}`);
+      const res = await fetch(
+        url +
+          `hadiths?book=sahih-bukhari&apiKey=${key}${
+            page ? `&page=${page}` : ""
+          }${perPage ? `&paginate=${perPage}` : ""}${
+            search ? `&hadithEnglish=${search}` : ""
+          }`,
+      );
       const data = await res.json();
+
       if (data.status !== 200)
         dispatch({ type: "error", payload: data.message });
 
       dispatch({ type: "load/hadiths", payload: data.hadiths.data });
+      dispatch({
+        type: "load/pagination",
+        payload: {
+          total: data.hadiths.total,
+          perPage: data.hadiths.per_page,
+          currentPage: data.hadiths.current_page,
+          lastPage: data.hadiths.last_page,
+        },
+      });
     } catch (error) {
       dispatch({ type: "error", payload: error.message });
     } finally {
@@ -47,16 +67,30 @@ function HadithProvider({ children }) {
     }
   }
 
-  async function fetchChapterHadiths(chapterId) {
+  async function fetchChapterHadiths({ chapterId, page, perPage, search }) {
     dispatch({ type: "loading", payload: true });
     try {
       const res = await fetch(
-        url + `hadiths?book=sahih-bukhari&chapter=${chapterId}&apiKey=${key}`,
+        url +
+          `hadiths?book=sahih-bukhari&chapter=${chapterId}&apiKey=${key}${
+            page ? `&page=${page}` : ""
+          }${perPage ? `&paginate=${perPage}` : ""}${
+            search ? `&hadithEnglish=${search}` : ""
+          }`,
       );
       const data = await res.json();
 
       if (data.status === 200)
         dispatch({ type: "load/hadiths", payload: data.hadiths.data });
+      dispatch({
+        type: "load/pagination",
+        payload: {
+          total: data.hadiths.total,
+          perPage: data.hadiths.per_page,
+          currentPage: data.hadiths.current_page,
+          lastPage: data.hadiths.last_page,
+        },
+      });
     } catch (error) {
       if (error.status === 404)
         dispatch({ type: "error", payload: "Hadith not found" });
@@ -94,6 +128,7 @@ function HadithProvider({ children }) {
         hadith,
         isLoading,
         error,
+        pagination,
         fetchHadiths,
         fetchSingleHadith,
         fetchChapterHadiths,
